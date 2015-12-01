@@ -1,6 +1,6 @@
 angular.module('app.controllers', ['ionic','highcharts-ng'])
 
-.controller('loginCtrl', function($scope, $http, $ionicPopup, $state)  {
+.controller('loginCtrl', function($scope, $http, $ionicPopup, $state,$localstorage)  {
   $scope.user = {};
 
   $scope.loginFunction = function() {
@@ -22,12 +22,35 @@ angular.module('app.controllers', ['ionic','highcharts-ng'])
   };
 })
 
-.controller('dashboardCtrl', function($scope) {
+.controller('dashboardCtrl', function($scope, $http, $rootScope, $location,$localstorage) {
+
+  $rootScope.activetab = $location.path();
+  var user = $localstorage.getObject('user');
+
+  function setGeneralTotal(){
+    $http.get('http://smart-water.tk/api/report/totalByUser/'+user.cpf).success(function(data) {
+      $rootScope.generalCounter = data.total;
+      $rootScope.lastUpdate = data.last_update;
+    });
+
+    setTimeout(function() {
+      setInterval(function() {
+        $http.get('http://smart-water.tk/api/report/totalByUser/'+user.cpf).success(function(data) {
+          $rootScope.generalCounter = data.total;
+          $rootScope.lastUpdate = data.last_update;
+        });
+      }, 10000);
+    });
+  }
+
+  //set counters
+  setGeneralTotal();
 
 })
 
 .controller('userInfoCtrl', function($scope,$localstorage) {
   var user = $localstorage.getObject('user');
+  $scope.user = user;
 })
 
 .controller('dailyReportCtrl', function($scope) {

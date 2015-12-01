@@ -1,7 +1,16 @@
 <ion-view title="User Info">
-    <ion-content padding="'true'" class="has-header">
-        <div>
-            <p>User info</p>
-        </div>
-    </ion-content>
+  <ion-content padding="'true'" class="has-header">
+    <div>
+      <tr ng-model="user">
+        <td>Name: {{user.name}}</td>
+        <td>CPF: {{user.cpf}}</td>
+        <td>Email: {{user.email}}</td>
+        <td>Address: {{user.address}}</td>
+        <td>City: {{user.city}}</td>
+        <td>State: {{user.state_city}}</td>
+        <td>Country: {{user.country}}</td>
+        <td>Number of Residents: {{user.number_of_residents}}</td>
+      </tr>
+    </div>
+</ion-content>
 </ion-view>
