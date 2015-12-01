@@ -22,7 +22,7 @@ angular.module('app.controllers', ['ionic','highcharts-ng'])
   };
 })
 
-.controller('dashboardCtrl', function($scope, $http, $rootScope, $location,$localstorage) {
+.controller('dashboardCtrl', function($scope, $http, $rootScope, $location, $localstorage) {
 
   $rootScope.activetab = $location.path();
   var user = $localstorage.getObject('user');
@@ -59,6 +59,7 @@ angular.module('app.controllers', ['ionic','highcharts-ng'])
 
 .controller('monthlyReportCtrl', function($scope, $http, $localstorage) {
 
+  //function to set Month Charts 
   function setMonthCharts($scope, $http, userCPF){
     $http.get('http://smart-water.tk/api/report/lastYear/'+userCPF).success(function(days) {
       $scope.monthCharts = {
