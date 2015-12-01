@@ -1,7 +1,10 @@
 <ion-view title="Monthly Report">
-    <ion-content padding="'true'" class="has-header">
-        <div>
-          <p>This graphic presents the consumption of water for last 12 months.</p>
-        </div>
-    </ion-content>
+  <ion-content padding="'true'" class="has-header">
+    <!--<ion-scroll zooming="false" direction="x" scrollbar-x="false" scrollbar-y="false" style="width: 600px">-->
+      <div>
+        <p>This graphic presents the consumption of water for last 12 months.</p>
+        <highchart id="monthCharts" config="monthCharts"></highchart>
+      </div>
+    <!--</ion-scroll>-->
+  </ion-content>
 </ion-view>
