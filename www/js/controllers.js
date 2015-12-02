@@ -145,7 +145,20 @@ angular.module('app.controllers', ['ionic','highcharts-ng'])
       }
     });
   }
-})
+
+  $scope.updateCharts = function(selectedMonth) {
+    var monthYear = selectedMonth.split("/");
+    setDailyCharts($scope, $http, user.cpf, monthYear[1], monthYear[0]);
+  }
+
+  //populate the select with all monhts that register
+  listMonths($scope, $http, user.cpf);
+
+  //set charts with current month
+  var time = new Date();
+  setDailyCharts($scope, $http, user.cpf, time.getFullYear(), time.getMonth()+1);
+
+  })
 
 .controller('monthlyReportCtrl', function($scope, $http, $localstorage) {
 
