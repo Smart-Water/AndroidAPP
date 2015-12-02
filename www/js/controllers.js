@@ -145,10 +145,11 @@ angular.module('app.controllers', ['ionic','highcharts-ng'])
       }
     });
   }
+})
 
 .controller('monthlyReportCtrl', function($scope, $http, $localstorage) {
 
-  //function to set Month Charts 
+  //function to set Month Charts
   function setMonthCharts($scope, $http, userCPF){
     $http.get('http://smart-water.tk/api/report/lastYear/'+userCPF).success(function(days) {
       $scope.monthCharts = {
