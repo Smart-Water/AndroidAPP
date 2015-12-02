@@ -1,16 +1,14 @@
 <ion-view title="User Info">
   <ion-content padding="'true'" class="has-header">
-    <div>
-      <tr ng-model="user">
-        <td>Name: {{user.name}}</td>
-        <td>CPF: {{user.cpf}}</td>
-        <td>Email: {{user.email}}</td>
-        <td>Address: {{user.address}}</td>
-        <td>City: {{user.city}}</td>
-        <td>State: {{user.state_city}}</td>
-        <td>Country: {{user.country}}</td>
-        <td>Number of Residents: {{user.number_of_residents}}</td>
-      </tr>
-    </div>
-</ion-content>
+    <ion-list>
+      <ion-item menu-close=""><b>Name:</b> {{user.name}}</ion-item>
+      <ion-item menu-close=""><b>CPF:</b> {{user.cpf}}</ion-item>
+      <ion-item menu-close=""><b>Email:</b> {{user.email}}</ion-item>
+      <ion-item menu-close=""><b>Address:</b> {{user.address}}</ion-item>
+      <ion-item menu-close=""><b>City:</b> {{user.city}}</ion-item>
+      <ion-item menu-close=""><b>State:</b> {{user.state_city}}</ion-item>
+      <ion-item menu-close=""><b>Country:</b> {{user.country}}</ion-item>
+      <ion-item menu-close=""><b>Number of Residents:</b> {{user.number_of_residents}}</ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>

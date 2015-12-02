@@ -43,8 +43,24 @@ angular.module('app.controllers', ['ionic','highcharts-ng'])
     });
   }
 
+  function setMonthTotal(){
+    $http.get('http://smart-water.tk/api/report/monthTotalByUser/'+user.cpf).success(function(data) {
+      $rootScope.monthCounter = data.total;
+    });
+
+    setTimeout(function() {
+      setInterval(function() {
+        $http.get('http://smart-water.tk/api/report/monthTotalByUser/'+user.cpf).success(function(data) {
+          $rootScope.monthCounter = data.total;
+        });
+      }, 10000);
+    });
+  };
+
   //set counters
   setGeneralTotal();
+  setMonthTotal();
+
 
 })
 
