@@ -1,7 +1,22 @@
 <ion-view title="Daily Report">
-    <ion-content padding="'true'" class="has-header">
-        <div>
-          <p>This graphic presents the daily total consumption of water.</p>
+  <ion-content padding="'true'" class="has-header">
+    <div>
+      <p>This graphic presents the daily total consumption of water.</p>
+    </div>
+
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Month:
         </div>
-    </ion-content>
+        <select ng-model="selectedMonth" ng-change="updateCharts(selectedMonth)">
+          <option ng-repeat="month in months" value="{{month.value}}">{{month.description}}</option>
+        </select>
+      </label>
+    </div>
+
+    <div>
+      <highchart id="dailyCharts" config="dailyCharts"></highchart>
+    </div>
+  </ion-content>
 </ion-view>
