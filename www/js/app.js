@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes'])
+angular.module('app', ['ionic', 'app.controllers', 'app.routes','ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $ionicPopup, $cordovaNetwork) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,6 +18,19 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+	
+	//check connection status
+	if ($cordovaNetwork.isOffline()) {
+		$ionicPopup.confirm({
+			title: "Internet Disconnected",
+			content: "The internet is disconnected on your device."
+		})
+		.then(function(result) {
+			if(!result) {
+				ionic.Platform.exitApp();
+			}
+		});
+	}
   });
 })
 
