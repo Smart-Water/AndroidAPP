@@ -8,10 +8,16 @@ angular.module('app.routes', [])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-    .state('smartWater', {
+    .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
       controller: 'loginCtrl'
+    })
+	
+	.state('logout', {
+      url: '/logout',
+      templateUrl: 'templates/login.html',
+      controller: 'logoutCtrl'
     })
 
     .state('menu', {

@@ -1,6 +1,6 @@
 angular.module('app.controllers', ['ionic','highcharts-ng'])
 
-.controller('loginCtrl', function($scope, $http, $ionicPopup, $state,$localstorage)  {
+.controller('loginCtrl', function($scope, $http, $ionicPopup, $state, $localstorage)  {
   $scope.user = {};
 
   $scope.loginFunction = function() {
@@ -20,6 +20,15 @@ angular.module('app.controllers', ['ionic','highcharts-ng'])
       }
     });
   };
+  
+})
+
+.controller('logoutCtrl', function($ionicLoading, $ionicHistory, $state, $localstorage)  {
+	$localstorage.set('user', '')
+    $state.go('login');
+    $ionicLoading.hide();
+    $ionicHistory.clearHistory();
+    $ionicHistory.clearCache();
 })
 
 .controller('dashboardCtrl', function($scope, $http, $rootScope, $location, $localstorage) {
