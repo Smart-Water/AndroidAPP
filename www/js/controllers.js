@@ -27,6 +27,8 @@ angular.module('app.controllers', ['ionic','highcharts-ng'])
   $rootScope.activetab = $location.path();
   var user = $localstorage.getObject('user');
 
+  $rootScope.userName = user.name;
+
   function setGeneralTotal(){
     $http.get('http://smart-water.tk/api/report/totalByUser/'+user.cpf).success(function(data) {
       $rootScope.generalCounter = data.total;

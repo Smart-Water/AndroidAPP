@@ -1,9 +1,10 @@
-<ion-view title="Dashboard">
+<ion-view title="Dashboard - {{userName}}">
     <ion-content padding="'true'" style="background: url(img/smartwater-background.ico) no-repeat center;" class="has-header">
+    <p>These counters presents the consumption of water by user.</p>
         <h2>General Total (Liters):</h2>
         <h3>{{generalCounter}}</h3>
         <h2>Month Total (Liters):</h2>
         <h3>{{monthCounter}}</h3>
-        <h4>Last Update: {{lastUpdate}}</h4>
+        <h4 class="icon ion-loop">Last Update: {{lastUpdate}}</h4>
     </ion-content>
 </ion-view>
